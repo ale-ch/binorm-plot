@@ -4,6 +4,7 @@ library(plotly)
 
 source('https://raw.githubusercontent.com/ale-ch/binorm_plot/main/plot_binorm.R')
 
+
 ui <- fluidPage(
 
     titlePanel("Bivariate Normal Distribution"),
@@ -50,7 +51,8 @@ ui <- fluidPage(
         
         mainPanel = 
             mainPanel(
-                plotlyOutput("plot", width = "100%", height = "100%")
+                plotlyOutput("plot1", width = "100%", height = "100%"),
+                plotlyOutput("plot2", width = "100%", height = "100%")
             )
             
     )
@@ -59,12 +61,20 @@ ui <- fluidPage(
 
 server <- function(input, output, session) {
     
-    output$plot <- renderPlotly({
+    output$plot1 <- renderPlotly({
         
         Sigma <- make_Sigma(input$var_x, input$var_y, input$rho)
         mu <- c(input$mu_x, input$mu_y)
         
-        plot_binorm(n = input$n, mu, Sigma)
+        plot_binorm(n = input$n, mu, Sigma)[[1]]
+    })
+    
+    output$plot2 <- renderPlotly({
+        
+        Sigma <- make_Sigma(input$var_x, input$var_y, input$rho)
+        mu <- c(input$mu_x, input$mu_y)
+        
+        plot_binorm(n = input$n, mu, Sigma)[[2]]
     })
     
 }
