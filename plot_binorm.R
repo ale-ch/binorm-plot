@@ -25,9 +25,10 @@ plot_binorm <- function(n, mu, Sigma) {
   
   data <- as.data.frame(mvrnorm(n, mu, Sigma))
   kd <- with(data, kde2d(V1, V2, n = 50))
-  fig <- plot_ly(x = kd$x, y = kd$y, z = kd$z) %>% add_surface()
+  fig1 <- plot_ly(x = kd$x, y = kd$y, z = kd$z) %>% add_surface()
+  fig2 <- plot_ly(z = kd$z, type = "contour")
   
-  fig
+  list(fig1, fig2)
 }
 
 
