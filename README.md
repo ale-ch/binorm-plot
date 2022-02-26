@@ -1,2 +1,2 @@
 # binorm_plot
-Interactive plot of bivariate normal distribution. 
+Interactive visualization of bivariate normally distributed data. 
