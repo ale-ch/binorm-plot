@@ -2,7 +2,7 @@ library(shiny)
 library(MASS)
 library(plotly)
 
-source('H:\\R Projects\\Practice\\binorm_plot_app\\binorm_plot\\plot_binorm.R')
+source('https://raw.githubusercontent.com/ale-ch/binorm_plot/main/plot_binorm.R')
 
 ui <- fluidPage(
 
